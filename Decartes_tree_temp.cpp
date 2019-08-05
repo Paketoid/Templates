@@ -73,7 +73,7 @@ node* insert(node* root, node* v){
         return v;
     }
     else{
-        if (v->key < root->key) root->Left = insert(root->left, v);
+        if (v->key < root->key) root->left = insert(root->left, v);
         else root->right = insert(root->right, v);
         upd(root);
         return root;
