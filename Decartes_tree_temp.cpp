@@ -154,7 +154,7 @@ int main(){
         }
         if (s == "erase"){
             int key;
-            cin >> k;
+            cin >> key;
             root = erase(root, key);
         }
         if (s == "write"){
