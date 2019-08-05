@@ -1,0 +1,84 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'scrooloose/nerdtree'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+
+
+
+
+
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set nu
+syntax on
+set smartindent
+set cindent
+set ai
+set hls
+autocmd FileType cpp nnoremap <F9> :set makeprg=g++\ -std=gnu++17\ -Wall\ -Wextra\ -Wshadow\ -O2\ -o\ %<\ %<.cpp<CR>:make<CR>
+autocmd FileType c nnoremap <F9> :set makeprg=g++\ -std=gnu++17\ -Wall\ -Wextra\ -Wshadow\ -O2\ -o\ %<\ %<.cpp<CR>:make<CR>
+
+"autocmd FileType cpp nnoremap <F8> :set makeprg=gdb\ %<.cpp<CR>:make<CR>
+"autocmd FileType c nnoremap <F8> :set makeprg=gdb\ %<.cpp<CR>:make<CR>
+
+nnoremap <F7> :!clear<CR><CR>
+nnoremap <F10> :!time ./%<<CR>
+autocmd FileType python nnoremap <F3> :!python3 %<.py<CR>
+nnoremap <F5> :w <CR>
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+autocmd BufNewFile *.cpp 0r ~/Desktop/C++/.template.cpp
+autocmd BufNewFile *.c 0r ~/Desktop/C/.template.c
+
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
