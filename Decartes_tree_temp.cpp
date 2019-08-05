@@ -139,7 +139,6 @@ void write(node* root){
 node* root = nullptr;
 
 int main(){
-    return 0;
     int n;
     cin >> n;
     while (n){
@@ -172,4 +171,5 @@ int main(){
             cout << find_num(root, key) << endl;
         }
     }
+    return 0;
 }
