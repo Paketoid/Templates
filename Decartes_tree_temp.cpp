@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int INF 1e9;
+#define INF 1e9;
 
 using namespace std;
 
