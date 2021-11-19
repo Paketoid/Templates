@@ -8,6 +8,35 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage[a4paper, left=15mm, right=10mm, top=20mm, bottom=20mm]{geometry}
 
+%замена русского текста в формулах
+\makeatletter
+\def@inmathsubstitute#1{%
+\def\next{@inmathwarn#1}%
+\ifx#1\cyra\let\next a\fi
+\ifx#1\cyre\let\next e\fi
+\ifx#1\cyro\let\next o\fi
+\ifx#1\cyrr\let\next p\fi
+\ifx#1\cyrs\let\next c\fi
+\ifx#1\cyru\let\next y\fi
+\ifx#1\cyrh\let\next x\fi
+\ifx#1\CYRA\let\next A\fi
+\ifx#1\CYRV\let\next B\fi
+\ifx#1\CYRG\let\next \Gamma\fi
+\ifx#1\CYRE\let\next E\fi
+\ifx#1\CYRK\let\next K\fi
+\ifx#1\CYRM\let\next M\fi
+\ifx#1\CYRN\let\next H\fi
+\ifx#1\CYRO\let\next O\fi
+\ifx#1\CYRP\let\next \Pi\fi
+\ifx#1\CYRR\let\next P\fi
+\ifx#1\CYRS\let\next C\fi
+\ifx#1\CYRT\let\next T\fi
+\ifx#1\CYRU\let\next Y\fi
+\ifx#1\CYRF\let\next \Phi\fi
+\ifx#1\CYRH\let\next X\fi
+\next }
+\makeatother
+
 \columnsep=2pc
 \columnseprule=.4pt
 
