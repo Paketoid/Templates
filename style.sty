@@ -1,0 +1,129 @@
+%\usepackage[russian]{babel}
+%\usepackage[dvipdfmx]{graphicx}
+\usepackage{placeins}
+\usepackage{bmpsize}
+\usepackage{amsfonts, amsmath, amssymb}
+\usepackage{ccfonts,eulervm,euler}
+\usepackage{indentfirst}
+\renewcommand{\bfdefault}{sbc}
+\usepackage{listings}
+
+\usepackage{amsthm}
+%\usepackage{ntheorem}
+
+\makeatletter
+% we use \prefix@<level> only if it is defined
+\renewcommand{\@seccntformat}[1]{%
+  \ifcsname prefix@#1\endcsname
+    \csname prefix@#1\endcsname
+  \else
+    \csname the#1\endcsname\quad
+  \fi}
+% define \prefix@section
+\newcommand\prefix@section{}
+\newcommand{\prefix@subsection}{\thesubsection\ - }
+\newcommand{\prefix@subsubsection}{\thesubsubsection\ - }
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\makeatother
+
+
+%----------
+
+%\sloppy
+
+%----------
+
+%maketitle для титульника
+\makeatletter
+\newcommand\Maketitle{\begingroup%
+\let\footnotesize\small
+\let\footnoterule\relax
+\let \footnote \thanks
+\null\vfil
+\vskip 60\p@
+\begin{center}%
+{\Huge \@title \par}%
+\vskip 3em%
+{\huge
+ \lineskip .75em%
+  \begin{tabular}[t]{c}%
+    \@author
+  \end{tabular}\par}%
+  \vskip 1.5em%
+{\Large \@date \par}%       % Set date in \large size.
+\end{center}\par
+\@thanks
+\vfil\null
+\pagebreak
+\endgroup%
+\setcounter{footnote}{0}%
+}
+\makeatother
+
+
+%maketitle для встраивания статей
+\makeatletter
+\renewcommand\maketitle{\begingroup%
+%\let\footnotesize\small
+%\let\footnoterule\relax
+\begin{center}%
+{\huge \@title \par}%
+%\vskip 1.5em%
+%\vskip -1.5em%
+\end{center}\par
+\endgroup%
+\addtocounter{section}{1}
+\setcounter{subsection}{0}
+\setcounter{theorem}{0}
+\addcontentsline{toc}{section}{\protect\numberline{\thesection} \@title}
+}
+\makeatother
+
+%------------------
+
+\renewenvironment{abstract}{%
+        \Large
+        \begin{center}%
+          {\bfseries \abstractname\vspace{-.5em}}%
+        \end{center}%
+        \quotation
+}
+
+%---------
+
+\newcounter{chapnumber}\setcounter{chapnumber}{1}
+\newcounter{thnum}[section]
+
+\newtheorem{theorem}{\hspace{1em}Теорема}[section]
+\newtheorem{lemma}[theorem]{\hspace{1em}Лемма}
+\newtheorem*{lemma*}{\hspace{1em}Лемма}
+\newtheorem{conjecture}[theorem]{\hspace{1em}Предложение}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{\hspace{1em}Определение}
+\newtheorem*{definition*}{\hspace{1em}Определение}
+
+\newtheorem*{prf}{\hspace{1em}Доказательство}
+\newenvironment{prf*}
+ {\pushQED{\qed}\prf}
+ {\popQED\endprf}
+
+\def\RR{{\mathbb R}}
+\def\QQ{{\mathbb Q}}
+\def\ZZ{{\mathbb Z}}
+\def\CC{{\mathbb C}}
+\def\NN{{\mathbb N}}
+\def\FF{{\mathbb F}}
+
+\newcommand{\Subsection}[1]{
+	%\begin{centering}
+	\subsection*{\LARGE #1}
+  \addcontentsline{toc}{subsection}{#1}
+  %\refstepcounter{subsection}
+  %\end{centering}
+}
+
+%----------
+%знак делимости
+\DeclareRobustCommand{\divby}{ \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}
+}
