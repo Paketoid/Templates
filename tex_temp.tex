@@ -1,47 +1,87 @@
-\documentclass{article}
-\usepackage{graphicx}
-\usepackage[utf8]{inputenc}
+\documentclass{article} %пакет стандартных команд для сборки документа обозначенного типа
+\usepackage{graphicx} %пакет для работы с графикой (в том числе, вставка)
+\usepackage[utf8]{inputenc} %кодировка файла
+\usepackage[T2A]{fontenc} %шрифт
 \usepackage[russian]{babel}
-\usepackage{amssymb}
-\usepackage{amstext}
-\usepackage{multicol}
-\usepackage[shortlabels]{enumitem}
-\usepackage[a4paper, left=15mm, right=10mm, top=20mm, bottom=20mm]{geometry}
+\usepackage{amssymb} %пакет спецсимволов
+\usepackage{amstext} %пакет для красивого вкрапления кусков текста в математический текст
+\usepackage{multicol} %пакет для разметки под несколько колонок текста
+\usepackage{changepage} %пакет для точечного изменения разметки страницы (например, полей)
+\usepackage[shortlabels]{enumitem} %пакет с списками
+\usepackage{geometry} %штука для разметки листа
+\usepackage{tocloft} %штука для фокусов с содержанием (см стилевик)
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref} %подключение пакета, отвечающего за гиперссылки
 
-%замена русского текста в формулах
-\makeatletter
-\def@inmathsubstitute#1{%
-\def\next{@inmathwarn#1}%
-\ifx#1\cyra\let\next a\fi
-\ifx#1\cyre\let\next e\fi
-\ifx#1\cyro\let\next o\fi
-\ifx#1\cyrr\let\next p\fi
-\ifx#1\cyrs\let\next c\fi
-\ifx#1\cyru\let\next y\fi
-\ifx#1\cyrh\let\next x\fi
-\ifx#1\CYRA\let\next A\fi
-\ifx#1\CYRV\let\next B\fi
-\ifx#1\CYRG\let\next \Gamma\fi
-\ifx#1\CYRE\let\next E\fi
-\ifx#1\CYRK\let\next K\fi
-\ifx#1\CYRM\let\next M\fi
-\ifx#1\CYRN\let\next H\fi
-\ifx#1\CYRO\let\next O\fi
-\ifx#1\CYRP\let\next \Pi\fi
-\ifx#1\CYRR\let\next P\fi
-\ifx#1\CYRS\let\next C\fi
-\ifx#1\CYRT\let\next T\fi
-\ifx#1\CYRU\let\next Y\fi
-\ifx#1\CYRF\let\next \Phi\fi
-\ifx#1\CYRH\let\next X\fi
-\next }
-\makeatother
+\usepackage{setspace}
 
-\columnsep=2pc
-\columnseprule=.4pt
+\geometry{a4paper} %выбор размера бумаги
 
-\let\oldpmatrix\pmatrix
-\def\pmatrix#1{{\def\quad{\hskip.2em}\oldpmatrix{#1}}}
+\usepackage{style.sty} %стилевик = самописная библиотека
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{wrapfig}
+
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{etoolbox}
+
+\graphicspath{./}
+
+%подгонка полей
+\textwidth=172mm
+\oddsidemargin=0mm
+\evensidemargin=0mm
+\advance\hoffset by -1in
+\advance\hoffset by 20mm
+\textheight=260mm
+\topmargin=0mm
+\headheight=0mm
+\headsep=0mm
+\advance\voffset by -1in
+\advance\voffset by 15mm
+
+
+\newcommand{\define}[1]{{\textit{#1}}}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+\newcommand{\tab}[1]{\hspace*{#1}}
+
+\newcounter{zadacha}
+\newcounter{ppp}
+\newcommand{\zd}{\medskip\par%
+	\addtocounter{zadacha}{1}%
+	{\framebox{\bf{\arabic{zadacha}}}}%
+	\setcounter{ppp}{0}
+}
+
+\newcommand{\zdstar}{\medskip\par%
+	\addtocounter{zadacha}{1}%
+	{\framebox{\bf{\arabic{zadacha}*}}}%
+	\setcounter{ppp}{0}
+}
+
+\newcommand{\pp}[1][5mm]{\addtocounter{ppp}{1}
+\ifnumcomp{\value{ppp}}{>}{1}{\hspace{#1}
+\framebox{\alph{ppp}}}{\hspace{#1}\framebox{\alph{ppp}}} }
+
+\newcommand{\ppstar}{\addtocounter{ppp}{1}
+\ifnumcomp{\value{ppp}}{>}{1}{\hspace{5,6mm}
+\framebox{\alph{ppp}*}}{\hspace{7mm}\framebox{\alph{ppp}*}} }
+
+\pagenumbering{gobble} %отключает номера страниц
+
+\usepackage{movie15}
+
+\newcommand\TikCircle[1][2.5]{\tikz[baseline=-#1]{\draw[thick](0,0)circle[radius=#1mm];}}
+
+\usepackage{epigraph}
+\setlength\epigraphwidth{.8\textwidth}
+
 
 \begin{document}
 
