@@ -1,17 +1,18 @@
-%\usepackage[russian]{babel}
-%\usepackage[dvipdfmx]{graphicx}
 \usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{pgf,tikz}
-\usepackage{mathtools, nccmath}
-\usetikzlibrary{arrows}
-\usepackage{wrapfig}
-\usepackage{geometry}
-\usepackage{amsthm}
+\usepackage{amsfonts} %пакет спецшрифтов
+\usepackage{amssymb} %пакет спецсимволов
+\usepackage{amstext} %пакет для красивого вкрапления кусков текста в математический текст
+\usepackage{amsthm} %пакет для создания собственных модификаций среды theorem
 %\usepackage{ntheorem}
-\usepackage[colorlinks=true, linkcolor=black, linktoc=all, citecolor=blue, urlcolor=blue]{hyperref}
+
+\usepackage{graphicx} %пакет для работы с графикой (в том числе, вставка)
+\usepackage{pgf,tikz} %пакет для рисования картинок в Tikz
+\usepackage{mathtools, nccmath}
+\usepackage{wrapfig} %обтекание картинок текстом
+\usepackage[colorlinks=true, linkcolor=black, linktoc=all, citecolor=blue, urlcolor=blue]{hyperref} %пакет, отвечающий за гиперссылки
+\usepackage{multicol} %пакет для разметки под несколько колонок текста
+\usepackage{changepage} %пакет для точечного изменения разметки страницы (например, полей)
+\usepackage[shortlabels]{enumitem} %пакет со средами по типу enumerate
 
 \usepackage{placeins}
 \usepackage{bmpsize}
@@ -20,11 +21,12 @@
 \renewcommand{\bfdefault}{sbc}
 \usepackage{listings}
 
-\usepackage{enumerate}
+\usepackage{enumerate} %модификация enumerate
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 %----------
 %подгонка полей
+\usepackage{geometry} %пакет для разметки листа
 \textwidth=172mm
 \oddsidemargin=0mm
 \evensidemargin=0mm
@@ -60,6 +62,8 @@
 %\sloppy
 
 %----------
+%макросы для верстки сборника статей
+\usepackage{tocloft} %пакет для фокусов с содержанием
 
 %maketitle для титульника
 \makeatletter
@@ -191,7 +195,6 @@
 \usepackage{titlesec}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{tikz}
 \usepackage{etoolbox}
 
 \usepackage{pgfplots}
@@ -203,3 +206,34 @@
 %------------
 %красивые дроби
 \usepackage{nicefrac}
+
+%------------
+%эпиграфы
+\usepackage{epigraph}
+\setlength\epigraphwidth{.8\textwidth}
+
+%------------
+%plain text на сером фоне
+\usepackage{fancyvrb,newverbs,xcolor}
+
+\definecolor{cverbbg}{gray}{0.93}
+\newenvironment{cverbatim}
+ {\SaveVerbatim{cverb}}
+ {\endSaveVerbatim
+  \flushleft\fboxrule=0pt\fboxsep=.5em
+  \colorbox{cverbbg}{\BUseVerbatim{cverb}}%
+  \endflushleft
+}
+\newenvironment{lcverbatim}
+ {\SaveVerbatim{cverb}}
+ {\endSaveVerbatim
+  \flushleft\fboxrule=0pt\fboxsep=.5em
+  \colorbox{cverbbg}{%
+    \makebox[\dimexpr\linewidth-2\fboxsep][l]{\BUseVerbatim{cverb}}%
+  }
+  \endflushleft
+}
+\newcommand{\ctexttt}[1]{\colorbox{cverbbg}{\texttt{#1}}}
+\newverbcommand{\cverb}
+  {\setbox\verbbox\hbox\bgroup}
+  {\egroup\colorbox{cverbbg}{\box\verbbox}}
