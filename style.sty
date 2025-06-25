@@ -1,15 +1,43 @@
 %\usepackage[russian]{babel}
 %\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pgf,tikz}
+\usepackage{mathtools, nccmath}
+\usetikzlibrary{arrows}
+\usepackage{wrapfig}
+\usepackage{geometry}
+\usepackage{amsthm}
+%\usepackage{ntheorem}
+\usepackage[colorlinks=true, linkcolor=black, linktoc=all, citecolor=blue, urlcolor=blue]{hyperref}
+
 \usepackage{placeins}
 \usepackage{bmpsize}
-\usepackage{amsfonts, amsmath, amssymb}
 \usepackage{ccfonts,eulervm,euler}
 \usepackage{indentfirst}
 \renewcommand{\bfdefault}{sbc}
 \usepackage{listings}
 
-\usepackage{amsthm}
-%\usepackage{ntheorem}
+\usepackage{enumerate}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%----------
+%подгонка полей
+\textwidth=172mm
+\oddsidemargin=0mm
+\evensidemargin=0mm
+\advance\hoffset by -1in
+\advance\hoffset by 20mm
+\textheight=260mm
+\topmargin=0mm
+\headheight=0mm
+\headsep=0mm
+\advance\voffset by -1in
+\advance\voffset by 15mm
+
+%----------
 
 \makeatletter
 % we use \prefix@<level> only if it is defined
@@ -95,6 +123,7 @@
 \newcounter{thnum}[section]
 
 \newtheorem{theorem}{\hspace{1em}Теорема}[section]
+\newtheorem*{theorem*}{\hspace{1em}Теорема}
 \newtheorem{lemma}[theorem]{\hspace{1em}Лемма}
 \newtheorem*{lemma*}{\hspace{1em}Лемма}
 \newtheorem{conjecture}[theorem]{\hspace{1em}Предложение}
@@ -127,3 +156,44 @@
 %знак делимости
 \DeclareRobustCommand{\divby}{ \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}
 }
+
+%----------
+\newcommand{\define}[1]{{\textit{#1}}}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+%----------
+\newcommand{\tab}[1]{\hspace*{#1}}
+
+%----------
+%нумерация задач
+\newcounter{zadacha}
+\newcounter{ppp}
+\newcommand{\zd}{\medskip\par%
+	\addtocounter{zadacha}{1}%
+	{\framebox{\bf{\arabic{zadacha}}}}%
+	\setcounter{ppp}{0}
+}
+
+\newcommand{\zdstar}{\medskip\par%
+	\addtocounter{zadacha}{1}%
+	{\framebox{\bf{\arabic{zadacha}*}}}%
+	\setcounter{ppp}{0}
+}
+
+\newcommand{\pp}[1][0mm]{\addtocounter{ppp}{1}
+\hspace{#1}\framebox{\alph{ppp}} }
+
+\newcommand{\ppstar}[1][0mm]{\addtocounter{ppp}{1}
+\hspace{#1}\framebox{\alph{ppp}*} }
+
+%------------
+%картинки в Tikz
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+
+%------------
+%красивые дроби
+\usepackage{nicefrac}
