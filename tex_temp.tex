@@ -1,86 +1,12 @@
-\documentclass{article} %пакет стандартных команд для сборки документа обозначенного типа
-\usepackage{graphicx} %пакет для работы с графикой (в том числе, вставка)
+\documentclass[12pt,a4paper]{article} %пакет стандартных команд для сборки документа обозначенного типа
+\usepackage[russian]{babel}
 \usepackage[utf8]{inputenc} %кодировка файла
 \usepackage[T2A]{fontenc} %шрифт
-\usepackage[russian]{babel}
-\usepackage{amssymb} %пакет спецсимволов
-\usepackage{amstext} %пакет для красивого вкрапления кусков текста в математический текст
-\usepackage{multicol} %пакет для разметки под несколько колонок текста
-\usepackage{changepage} %пакет для точечного изменения разметки страницы (например, полей)
-\usepackage[shortlabels]{enumitem} %пакет с списками
-\usepackage{geometry} %штука для разметки листа
-\usepackage{tocloft} %штука для фокусов с содержанием (см стилевик)
-\usepackage[colorlinks=true,linkcolor=blue]{hyperref} %подключение пакета, отвечающего за гиперссылки
 
-\usepackage{setspace}
-
-\geometry{a4paper} %выбор размера бумаги
-
-\usepackage{style.sty} %стилевик = самописная библиотека
-
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.15}
-\usepackage{mathrsfs}
-\usetikzlibrary{arrows}
-\usepackage{wrapfig}
-
-\usepackage{titlesec}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{tikz}
-\usepackage{etoolbox}
+\usepackage{style} %стилевик = самописная библиотека
 
 \graphicspath{./}
-
-%подгонка полей
-\textwidth=172mm
-\oddsidemargin=0mm
-\evensidemargin=0mm
-\advance\hoffset by -1in
-\advance\hoffset by 20mm
-\textheight=260mm
-\topmargin=0mm
-\headheight=0mm
-\headsep=0mm
-\advance\voffset by -1in
-\advance\voffset by 15mm
-
-
-\newcommand{\define}[1]{{\textit{#1}}}
-\newcommand{\tabitem}{~~\llap{\textbullet}~~}
-
-\newcommand{\tab}[1]{\hspace*{#1}}
-
-\newcounter{zadacha}
-\newcounter{ppp}
-\newcommand{\zd}{\medskip\par%
-	\addtocounter{zadacha}{1}%
-	{\framebox{\bf{\arabic{zadacha}}}}%
-	\setcounter{ppp}{0}
-}
-
-\newcommand{\zdstar}{\medskip\par%
-	\addtocounter{zadacha}{1}%
-	{\framebox{\bf{\arabic{zadacha}*}}}%
-	\setcounter{ppp}{0}
-}
-
-\newcommand{\pp}[1][5mm]{\addtocounter{ppp}{1}
-\ifnumcomp{\value{ppp}}{>}{1}{\hspace{#1}
-\framebox{\alph{ppp}}}{\hspace{#1}\framebox{\alph{ppp}}} }
-
-\newcommand{\ppstar}{\addtocounter{ppp}{1}
-\ifnumcomp{\value{ppp}}{>}{1}{\hspace{5,6mm}
-\framebox{\alph{ppp}*}}{\hspace{7mm}\framebox{\alph{ppp}*}} }
-
 \pagenumbering{gobble} %отключает номера страниц
-
-\usepackage{movie15}
-
-\newcommand\TikCircle[1][2.5]{\tikz[baseline=-#1]{\draw[thick](0,0)circle[radius=#1mm];}}
-
-\usepackage{epigraph}
-\setlength\epigraphwidth{.8\textwidth}
 
 
 \begin{document}
